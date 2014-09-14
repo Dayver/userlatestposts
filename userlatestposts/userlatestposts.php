@@ -1,18 +1,13 @@
 <?php
-
 /* ====================
-
   [BEGIN_COT_EXT]
-  Code=userlatestposts
   Hooks=users.details.tags,ajax
   Tags=users.details.tpl:{USERS_DETAILS_LATESTPOSTS}
-  Order=10
   [END_COT_EXT]
   ==================== */
-
 defined('COT_CODE') or die('Wrong URL.');
 
-require_once(cot_langfile('userlatestposts'));
+require_once (cot_langfile('userlatestposts'));
 
 $skin = cot_tplfile('userlatestposts', 'plug');
 $user_posts = new XTemplate($skin);
@@ -56,7 +51,7 @@ if ($cot_modules['forums'] && !$disable)
 
 	$pagenav = cot_pagenav('users', 'm=details&id='.$urr['user_id'], $df, $totalitems, $cfg['plugin']['userlatestposts']['countonpage'], 'df', '', $cfg['plugin']['userlatestposts']['ajax'], "reloadf", 'plug', "r=userlatestposts&id=".$urr['user_id']);
 
-	$sqluserlatestposts = $db->query("SELECT p.fp_id, p.fp_updated, t.ft_title, t.ft_id, t.ft_cat
+	$sqluserlatestposts = $db->query("SELECT p.fp_id, p.fp_topicid, p.fp_updated, t.ft_title, t.ft_id, t.ft_cat
 		 FROM $db_forum_posts p, $db_forum_topics t
 		 WHERE fp_posterid='".$urr['user_id']."'
 		 AND p.fp_topicid=t.ft_id
@@ -81,6 +76,7 @@ if ($cot_modules['forums'] && !$disable)
 					"UPF_DATE" => cot_date('datetime_medium', $row['fp_updated']),
 					"UPF_FORUMS" => $build_forum,
 					"UPF_FORUMS_ID" => $row['fp_id'],
+					"UPF_FORUMS_POST_URL" => cot_url('forums', 'm=posts&q=' . $row['fp_topicid'] . '&d=' . $durl, "#" . $row['fp_id']),
 					"UPF_FORUMS_TITLE" => htmlspecialchars($row['ft_title']),
 					"UPF_NUM" => $ii,
 					"UPF_ODDEVEN" => cot_build_oddeven($ii),
@@ -118,4 +114,3 @@ else
 	cot_sendheaders();
 	echo $user_pos;
 }
-?>
