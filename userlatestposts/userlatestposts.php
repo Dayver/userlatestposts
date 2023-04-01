@@ -1,13 +1,13 @@
 <?php
 /* ====================
-  [BEGIN_COT_EXT]
-  Hooks=users.details.tags,ajax
-  Tags=users.details.tpl:{USERS_DETAILS_LATESTPOSTS}
-  [END_COT_EXT]
-  ==================== */
+[BEGIN_COT_EXT]
+Hooks=users.details.tags,ajax
+Tags=users.details.tpl:{USERS_DETAILS_LATESTPOSTS}
+[END_COT_EXT]
+==================== */
 defined('COT_CODE') or die('Wrong URL.');
 
-require_once (cot_langfile('userlatestposts'));
+require_once cot_langfile('userlatestposts');
 
 $skin = cot_tplfile('userlatestposts', 'plug');
 $user_posts = new XTemplate($skin);
