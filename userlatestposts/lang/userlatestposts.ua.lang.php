@@ -9,12 +9,14 @@ $L['cfg_countonpage'] = "Кількість записів що виводять
 $L['cfg_countonpage_hint'] = "";
 $L['cfg_ajax'] = "Увімкнути AJAX навігацію";
 $L['cfg_ajax_hint'] = "";
+$L['cfg_timeback'] = "Період для підрахунку статистики";
+$L['cfg_timeback_hint'] = "(одиниця виміру - доба)";
 
 /**
  * Plugin Title & Subtitle
  */
 
-$L['info_desc'] = 'Відображає останні повідомлення користувача на форумах';
+$L['info_desc'] = "Відображає останні повідомлення користувача на форумах";
 
 /**
  * Plugin Body
